@@ -1,13 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Information from '../src/Information'
+import MainAttraction from '../src/MainAttraction'
+import Attractions from '../src/Attractions'
+import CityPhotos from '../src/CityPhotos'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { NotFound } from './NotFound';
+import createBrowserHistory from 'history/createBrowserHistory';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
+const _history = createBrowserHistory();
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter history={_history}>
+    <Switch>
+      <Route exact path="/" component={App} />
+      <Route path="/info" component={Information}/>
+      <Route path="/MainAttraction" component={MainAttraction}/>
+      <Route path="/Attractions" component={Attractions}/>
+      <Route path="/CityPhotos" component={CityPhotos}/>
+      <Route component={NotFound} />
+    </Switch>
+  </ BrowserRouter >,
   document.getElementById('root')
 );
 
